@@ -12,6 +12,8 @@ dependencies = [
     "langchain-core>=0.3.83",
     "langchain-groq>=0.3.8",
     "langgraph>=0.2.6",
+    "langgraph-checkpoint-sqlite>=3.0.3",
+    "streamlit>=1.55.0",
 ]
 
 [dependency-groups]
