@@ -83,10 +83,17 @@ if user_input:
     #CONFIG = {'configurable': {'thread_id': st.session_state['thread_id']}}
 
     CONFIG = {
-        "configurable": {"thread_id": st.session_state["thread_id"]},
+         # Used by the application/graph runtime to maintain a single chat session.
+        # The same thread_id ensures all turns belong to the same conversation state.
+        "configurable": {"thread_id": st.session_state["thread_id"]},   
         "metadata": {
-            "thread_id": st.session_state["thread_id"]
+             # Sent to LangSmith as trace metadata.
+        # This allows grouping and filtering runs by thread_id
+        # so the entire conversation can be inspected as one thread in LangSmith UI. 
+            "thread_id": st.session_state["thread_id"] 
         },
+        # Logical name for this run in LangSmith tracing.
+        # Helps identify that this run corresponds to a single chat turn.
         "run_name": "chat_turn",
     }
 
